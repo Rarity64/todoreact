@@ -1,17 +1,25 @@
 import AppHeader from "./AppHeader.jsx";
 import SearchPanel from "./SearchPanel.jsx";
 import TodoList from "./TodoList.jsx";
+import ItemsFilter from "./ItemsFilter.jsx";
 
 const App = () => {
     const todoData = [
-        { label: 'Проснуться'},
-        { label: 'Умыться', important: true },
-        { label: 'Покушать' }
+        { id: 1, label: 'Проснуться'},
+        { id: 2, label: 'Умыться', important: true },
+        { id: 3, label: 'Покушать' }
     ]
     return(
-    <div>
-        <AppHeader/>
-        <SearchPanel/>
+    <div className="container">
+        <AppHeader active = {3} done = {4}/>
+        <div className="row">
+            <div className="col-6">
+                <SearchPanel/>
+            </div>
+            <div className="col-6">
+                <ItemsFilter/>
+            </div>
+        </div>
         <TodoList todos = {todoData}/>
     </div>
     )
