@@ -8,18 +8,27 @@ class TodoListItem extends React.Component {
     }
 
     onLabelClick() {
-        console.log(`Нажато: ${this.props.label}`)
-        this.setState({done: true});
+        this.setState(
+            ({done}) => {
+                return {
+                    done: !done
+                }
+            }
+        );
     } 
 
     onMarkImportant = () => {
-        this.setState({
-            important: true
-        })
+        this.setState(
+            ({important}) => {
+                return {
+                    important: !important
+                }
+            }
+        );
     }
 
     render() {
-        const {label} = this.props
+        const {label, onDeleted} = this.props
 
         const {done, important} = this.state
         let classNames = 'item-list-base';
@@ -32,22 +41,24 @@ class TodoListItem extends React.Component {
             classNames += ' important';
         }
 
-        return <div>
-            <span 
-            onClick={this.onLabelClick.bind(this)} 
-            className={classNames}>
-                {label}
-            </span>
-            <button type="button" onClick={this.onMarkImportant} className="btn btn-outline-primary my-button mx-1">
-                <i className="fa-solid fa-exclamation"></i>
-            </button>
-            <button type="button" className="btn btn-outline-success my-button mx-1">
-                <i className="fa-solid fa-check"></i>
-            </button>
-            <button type="button" className="btn btn-outline-danger my-button mx-1">
-                <i className="fa-solid fa-trash"></i>
-            </button>
-        </div>
+        return(
+            <div>
+                <span 
+                onClick={this.onLabelClick.bind(this)} 
+                className={classNames}>
+                    {label}
+                </span>
+                <button type="button" onClick={this.onMarkImportant} className="btn btn-outline-primary my-button mx-1">
+                    <i className="fa-solid fa-exclamation"></i>
+                </button>
+                <button type="button" className="btn btn-outline-success my-button mx-1">
+                    <i className="fa-solid fa-check"></i>
+                </button>
+                <button type="button" className="btn btn-outline-danger my-button mx-1" onClick={onDeleted}>
+                    <i className="fa-solid fa-trash"></i>
+                </button>
+            </div>
+        )
     }
 }
 
