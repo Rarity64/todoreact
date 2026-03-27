@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 const AddItem = ({onAddItem}) => {
     const [value, setValue] = useState('');
 
@@ -9,7 +11,7 @@ const AddItem = ({onAddItem}) => {
     return (
         <div className='item-add-form'>
             <div className="row justify-content-start">
-                <div className="col-4">
+                <div className="col-8">
                     <input
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
@@ -17,7 +19,7 @@ const AddItem = ({onAddItem}) => {
                     placeholder="Напишите новое дело"/>
                 </div>
 
-                <div className="col-2">
+                <div className="col-4">
                     <button 
                     className='btn btn-outline-info' 
                     onClick={handleAdd}>
