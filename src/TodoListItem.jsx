@@ -1,5 +1,5 @@
 const TodoListItem = ({ label, onDeleted, onToggleDone, onToggleImportant, done, important }) => {
-    let classNames = 'item-list-base';
+    let classNames = 'item-list-base label-text';
 
     if(done) {
         classNames += ' done';
@@ -10,26 +10,30 @@ const TodoListItem = ({ label, onDeleted, onToggleDone, onToggleImportant, done,
     }
 
     return(
-        <div>
-            <span onClick={onToggleDone} className={classNames}>
-                <span className="label-text">{label}</span>
-            </span>
+        <div className="row">
+            <div className="col-6">
+                <span onClick={onToggleDone} className={classNames}>
+                    {label}
+                </span>
+            </div>
             
-            {done ? ( 
-                <button type="button" onClick={onToggleDone} className="btn btn-outline-warning my-button mx-1">
-                    <i className="fa-solid fa-arrow-left"></i>
+            <div className="col-6 buttons">
+                {done ? ( 
+                    <button type="button" onClick={onToggleDone} className="btn btn-outline-warning my-button mx-1">
+                        <i className="fa-solid fa-arrow-left"></i>
+                    </button> 
+                ) : (
+                    <button type="button" onClick={onToggleDone} className="btn btn-outline-success my-button mx-1">
+                        <i className="fa-solid fa-check"></i>
+                    </button>
+                )}
+                <button type="button" onClick={onToggleImportant} className="btn btn-outline-primary my-button mx-1">
+                    <i className="fa-solid fa-exclamation"></i>
                 </button> 
-            ) : (
-                <button type="button" onClick={onToggleDone} className="btn btn-outline-success my-button mx-1">
-                    <i className="fa-solid fa-check"></i>
+                <button type="button" className="btn btn-outline-danger my-button mx-1" onClick={onDeleted}>
+                    <i className="fa-solid fa-trash"></i>
                 </button>
-            )}
-            <button type="button" onClick={onToggleImportant} className="btn btn-outline-primary my-button mx-1">
-                <i className="fa-solid fa-exclamation"></i>
-            </button> 
-            <button type="button" className="btn btn-outline-danger my-button mx-1" onClick={onDeleted}>
-                <i className="fa-solid fa-trash"></i>
-            </button>
+            </div>
         </div>
     )
 }

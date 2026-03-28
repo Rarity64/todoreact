@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import React from 'react';
 import AppHeader from "./AppHeader.jsx";
 import SearchPanel from "./SearchPanel.jsx";
 import TodoList from "./TodoList.jsx";

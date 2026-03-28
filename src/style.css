@@ -15,7 +15,7 @@
 }
 
 .label-text {
-    width: 100%;
+    width: 40%;
     word-wrap: break-word;
 }
 
@@ -37,6 +37,7 @@
 }
 
 .item-list-base {
+    word-break: break-all;
     font-size: 1.5rem;
 }
 
